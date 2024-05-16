@@ -1,0 +1,99 @@
+﻿@page
+@model Actividad1_EjerciciosRazorPages.Pages.Programa3_IgualdadModel
+@{
+    var k = 0;
+    var sumatoria = 0;
+}
+
+<style>
+    .titulo {
+        text-align: center;
+    }
+
+    .contenedor {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .formulario {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 5px 0;
+    }
+
+        .inputs input[type="number"] {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+    input[type="submit"] {
+        border: none;
+        padding: 5px 20px;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: green;
+        color: white;
+        border-radius: 5px;
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .imagen {
+        width: 100%;
+    }
+
+    .mensaje {
+        text-align: center;
+        font-size: 18px;
+        margin: 10px;
+    }
+</style>
+
+<div class="contenedor">
+    <h2 class="titulo">Programa 1</h2>
+    <h3 class="titulo">Calculo de IMC</h3>
+    <form class="formulario" method="post">
+        <div class="inputs">
+            <label for="valorA">A:</label>
+            <input type="number" step="any" asp-for="valorA" />
+        </div>
+        <div class="inputs">
+            <label for="valorB">B:</label>
+            <input type="number" step="any" asp-for="valorB" />
+        </div>
+        <div class="inputs">
+            <label for="valorX">X:</label>
+            <input type="number" step="any" asp-for="valorX" />
+        </div>
+        <div class="inputs">
+            <label for="valorY">Y:</label>
+            <input type="number" step="any" asp-for="valorY" />
+        </div>
+        <div class="inputs">
+            <label for="valorN">N:</label>
+            <input type="number" step="any" asp-for="valorN" />
+        </div>
+        <input type="submit" value="Calcular" />
+    </form>
+
+
+    @if (Model.resultadoIzquierda != 0)
+    {
+        <p class="mensaje"><strong>(ax+by)^n:</strong> @Model.resultadoIzquierda</p>
+
+        @foreach (var num in Model.resultadosDerecha)
+        {
+            <p class="mensaje"><strong>K @k:</strong> @num</p>
+            { sumatoria += num; }
+            { k++; }
+        }
+        <p class="mensaje"><strong>Total:</strong> @sumatoria</p>
+    }
+
+</div>

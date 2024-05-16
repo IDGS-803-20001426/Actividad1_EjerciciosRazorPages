@@ -1,0 +1,73 @@
+﻿@page
+@model Actividad1_EjerciciosRazorPages.Pages.Programa2_EncriptacionModel
+@{
+}
+<style>
+        .titulo{
+            text-align: center;
+        }
+        .contenedor{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .formulario{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .inputs{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin: 5px 0;
+        }
+
+        .inputs input[type="number"], input[type="text"], select {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]{
+            border: none;
+            padding: 5px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: green;
+            color: white;
+            border-radius: 5px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .mensaje{
+            text-align:center;
+            font-size: 18px;
+            margin: 10px;
+        }
+     </style>
+
+<div class="contenedor">
+    <h2 class="titulo">Programa 2</h2>
+    <h3 class="titulo">Encriptar Mensajes</h3>
+    <form class="formulario" method="post">
+        <div class="inputs">
+            <label for="mensaje">Mensaje:</label>
+            <input type="text" id="mensaje" name="mensaje" asp-for="mensaje" />
+        </div>
+        <div class="inputs">
+            <label for="posiciones">Posiciones:</label>
+            <input type="number" min="1" id="posiciones" name="posiciones" asp-for="posiciones" />
+        </div>
+        <div class="inputs">
+            <label for="accionMensaje">Acción:</label>
+            <select id="accionMensaje" name="accionMensaje" asp-for="accionMensaje">
+                <option value="codificar">Codificar</option>
+                <option value="decodificar">Decodificar</option>
+            </select>
+        </div>
+        <input type="submit" value="Enviar" />
+
+        @if(Model.resultado != "")
+        {
+            <p class="mensaje"><strong>Mensaje:</strong> @Model.resultado</p>
+        }
+    </form>
+</div>

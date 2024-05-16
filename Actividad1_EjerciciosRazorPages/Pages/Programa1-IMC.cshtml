@@ -1,0 +1,91 @@
+﻿@page
+@model Actividad1_EjerciciosRazorPages.Pages.Programa1_IMCModel
+@{
+}
+<style>
+        .titulo{
+            text-align: center;
+        }
+        .contenedor{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .formulario{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .inputs{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin: 5px 0;
+        }
+        .inputs input[type="number"]{
+            padding: 5px;
+            border-radius: 5px;
+        }
+        input[type="submit"]{
+            border: none;
+            padding: 5px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: green;
+            color: white;
+            border-radius: 5px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .imagen{
+            width: 100%;
+        }
+        .mensaje{
+            text-transform: uppercase;
+        }
+
+        .mensaje {
+            text-transform: uppercase;
+        }
+
+        .contenedor-respuesta {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+    </style>
+
+
+<div class="contenedor">
+    <h2 class="titulo">Programa 1</h2>
+    <h3 class="titulo">Calculo de IMC</h3>
+    <form class="formulario" method="post">
+        <div class="inputs">
+            <label for="peso">Peso:</label>
+            <input type="number" step="any" asp-for="peso" />
+        </div>
+        <div class="inputs">
+            <label for="altura">Altura:</label>
+            <input type="number" step="any" asp-for="altura" />
+        </div>
+        <input type="submit" value="Calcular" />
+        
+        @if (Model.imc != 0 && Model.mensaje != "")
+        {
+            <div class="contenedor-respuesta">
+                <div class="contenedor-imagen">
+                    <img class="imagen" src="@Model.rutaImg.ToString()" alt="Imagen Recomendaciòn" />
+                </div>
+                <div>
+                    <p>
+                        <strong>IMC:</strong>
+                        @Model.imc.ToString("#.##")
+                    </p>
+                    <p>
+                        <strong>Estado: </strong>
+                        @Model.mensaje
+                    </p>
+                </div>
+            </div>
+        }
+
+    </form>
+</div>

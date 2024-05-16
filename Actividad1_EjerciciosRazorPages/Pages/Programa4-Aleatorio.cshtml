@@ -1,0 +1,25 @@
+﻿@page
+@model Actividad1_EjerciciosRazorPages.Pages.Programa4_AleatorioModel
+@{
+}
+
+<style>
+    .titulos{
+        text-align: center;
+    }
+</style>
+
+<h1 class="titulos">Arreglo de Números Aleatorios</h1>
+<div style="display: flex; justify-content: space-between;">
+    @foreach (var numero in Model.ArregloNumeros)
+    {
+        <p>@numero</p>
+    }
+</div>
+
+<div>
+    <p>Suma: <strong>@Model.suma</strong></p>
+    <p>Media: <strong>@Model.mediaAritmetica.ToString("#.##")</strong></p>
+    <p>Mediana: <strong>@Model.mediana.ToString("#.##")</strong></p>
+    <p>Moda: <strong>@Model.moda</strong></p>
+</div>
